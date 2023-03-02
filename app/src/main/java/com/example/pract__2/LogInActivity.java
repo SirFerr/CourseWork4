@@ -2,35 +2,43 @@ package com.example.pract__2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 
 public class LogInActivity extends AppCompatActivity {
+    MainMenuFragment mainMenuFragment =new MainMenuFragment();
+    LinearFragment linearFragment = new LinearFragment();
 
+    RelativeFragment relativeFragment  = new RelativeFragment();
+    LoginFragment loginFragment = new LoginFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        EditText editText = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        editText.setText(getResources().getString(R.string.testEmail));
-        imageView.setImageResource(R.drawable.transparency_demonstration_1);
 
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container_view,loginFragment)
+                .commit();
     }
 
     public void onLogInBtnClick(View view){
-        Intent intent = new Intent(this, MainMenu.class);
-        EditText editText = (EditText) findViewById(R.id.editTextTextEmailAddress);
-        intent.putExtra("email",editText.getText().toString());
-        startActivity(intent);
-        Log.d("onLogInBtnClick","clicked");
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.fragment_container_view,mainMenuFragment)
+                .hide(loginFragment)
+                .commit();
+
+//        Intent intent = new Intent(this,MainMenu.class);
+////        EditText editText = (EditText) view.findViewById(R.id.editTextTextEmailAddress);
+////        intent.putExtra("email",editText.getText().toString());
+//        startActivity(intent);
     }
+
     public void onRegBtnClick(View view){
-        Intent intent = new Intent(this, LinearActivity.class);
-        startActivity(intent);
+        getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(R.id.fragment_container_view,linearFragment)
+                .commit();
     }
 }
