@@ -23,17 +23,17 @@ public class LinearFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_linear, container, false);
         Button button = view.findViewById(R.id.button4);
         MainMenuFragment mainMenuFragment = new MainMenuFragment();
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Log.d("onRegBtnClick","clicked");
+                Log.d("onRegBtnClick", "clicked");
             }
         });
         return inflater.inflate(R.layout.fragment_linear, container, false);
     }
 }
+
