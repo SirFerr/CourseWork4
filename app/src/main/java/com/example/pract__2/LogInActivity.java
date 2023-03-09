@@ -29,47 +29,32 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void Change(View view) {
+        FragmentTransaction ft = null;
         switch (view.getId()) {
-
             case R.id.continueBtn: {
                 Bundle bundle = new Bundle();
                 bundle.putString("email", String.valueOf(((EditText) loginFragment.getView().findViewById(R.id.editTextTextEmailAddress)).getText()));
                 mainMenuFragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction()
+                ft = getSupportFragmentManager().beginTransaction();
+                ft
                         .add(R.id.fragment_container_view, mainMenuFragment)
-                        .hide(loginFragment)
-                        .commit();
-                startFragment=loginFragment;
-                endFragment=mainMenuFragment;
+                        .hide(loginFragment);
                 break;
             }
             case R.id.regBtn: {
-                getSupportFragmentManager().beginTransaction()
+                ft = getSupportFragmentManager().beginTransaction();
+                ft
                         .add(R.id.fragment_container_view, linearFragment)
-                        .hide(loginFragment)
-                        .commit();
-                startFragment=loginFragment;
-                endFragment=linearFragment;
-                break;
+                        .hide(loginFragment);
             }
             case R.id.addApartmentBtn: {
-                getSupportFragmentManager().beginTransaction()
+                ft = getSupportFragmentManager().beginTransaction();
+                ft
                         .add(R.id.fragment_container_view, relativeFragment)
-                        .hide(mainMenuFragment)
-                        .commit();
-
-                startFragment=mainMenuFragment;
-                endFragment=relativeFragment;
+                        .hide(mainMenuFragment);
                 break;
             }
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        getSupportFragmentManager().beginTransaction()
-                .hide(endFragment)
-                .show(startFragment)
-                .commit();
+        ft.addToBackStack(null).commit();
     }
 }
