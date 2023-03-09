@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class LoginFragment extends Fragment {
@@ -24,42 +23,49 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Toast.makeText(getActivity(),"onCreate", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(getActivity(), "onCreate", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onCreate");
         super.onCreate(savedInstanceState);
+        getFragmentManager().setFragmentResultListener("requestKey", this, (requestKey, result) -> {
+            ((EditText) view.findViewById(R.id.editTextTextEmailAddress)).setText(result.getString("email"));
+            if (result.getString("passwd") != null)
+                ((EditText) view.findViewById(R.id.editTextTextPassword)).setText(result.getString("passwd"));
+        });
+
     }
 
     @Override
     public void onStart() {
-        Toast.makeText(getActivity(),"onStart", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "onStart", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onStart");
         super.onStart();
     }
 
     @Override
     public void onResume() {
-        Toast.makeText(getActivity(),"onResume", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "onResume", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onResume");
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        Toast.makeText(getActivity(),"onPause", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "onPause", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onPause");
         super.onPause();
     }
 
     @Override
     public void onStop() {
-        Toast.makeText(getActivity(),"onStop", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "onStop", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onStop");
         super.onStop();
     }
 
     @Override
     public void onDestroy() {
-        Toast.makeText(getActivity(),"onDestroy", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "onDestroy", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onDestroy");
         super.onDestroy();
     }

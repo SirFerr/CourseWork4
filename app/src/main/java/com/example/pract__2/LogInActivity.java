@@ -1,7 +1,7 @@
 package com.example.pract__2;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -10,14 +10,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class LogInActivity extends AppCompatActivity {
-    Fragment mainMenuFragment = new MainMenuFragment();
-    Fragment linearFragment = new LinearFragment();
-    Fragment relativeFragment = new RelativeFragment();
-    Fragment loginFragment = new LoginFragment();
+    MainMenuFragment mainMenuFragment = new MainMenuFragment();
+    LinearFragment linearFragment = new LinearFragment();
+    RelativeFragment relativeFragment = new RelativeFragment();
+    LoginFragment loginFragment = new LoginFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_login);
         getSupportFragmentManager().beginTransaction()
                 .setReorderingAllowed(true)
@@ -37,19 +38,30 @@ public class LogInActivity extends AppCompatActivity {
                         .getText()));
                 mainMenuFragment.setArguments(bundle);
                 ft
-                        .add(R.id.fragment_container_view, mainMenuFragment)
-                        .hide(loginFragment);
+                        .replace(R.id.fragment_container_view, mainMenuFragment);
                 break;
             }
             case R.id.regBtn: {
+                Bundle bundle = new Bundle();
+                bundle.putString("email", String.valueOf(((EditText) loginFragment
+                        .getView()
+                        .findViewById(R.id.editTextTextEmailAddress))
+                        .getText()));
+                linearFragment.setArguments(bundle);
                 ft
-                        .add(R.id.fragment_container_view, linearFragment)
-                        .hide(loginFragment);
+                        .replace(R.id.fragment_container_view, linearFragment);
+                break;
             }
             case R.id.addApartmentBtn: {
                 ft
-                        .add(R.id.fragment_container_view, relativeFragment)
-                        .hide(mainMenuFragment);
+                        .replace(R.id.fragment_container_view, relativeFragment);
+                break;
+            }
+            case R.id.regBtnNew: {
+                Log.d("regBtnNew","click");
+                linearFragment.clickRegBtnNew();
+                ft
+                        .replace(R.id.fragment_container_view,loginFragment);
                 break;
             }
         }
