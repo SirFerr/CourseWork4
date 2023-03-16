@@ -26,7 +26,6 @@ public class LogInActivity extends AppCompatActivity {
                 .commit();
 
     }
-
     public void Change(View view) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (view.getId()) {
