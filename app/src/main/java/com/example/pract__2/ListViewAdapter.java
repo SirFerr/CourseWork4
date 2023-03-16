@@ -10,13 +10,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class ListAdapter extends ArrayAdapter<Apartment> {
+public class ListViewAdapter extends ArrayAdapter<Apartment> {
     private LayoutInflater inflater;
     private int layout;
     private List<Apartment> apartment;
 
-    public ListAdapter(Context context, int resource,
-                       List<Apartment> items) {
+    public ListViewAdapter(Context context, int resource,
+                           List<Apartment> items) {
         super(context, resource, items);
         this.apartment = items;
         this.layout = resource;
@@ -27,11 +27,11 @@ public class ListAdapter extends ArrayAdapter<Apartment> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = inflater.inflate(this.layout, parent, false);
-        TextView textView = view.findViewById(R.id.TextViewList);
+        TextView textView = view.findViewById(R.id.apartmentID);
         TextView nameOfApartment = view.findViewById(R.id.apartmentName);
         ImageView imageView = view.findViewById(R.id.ImageViewList);
         Apartment item = apartment.get(position);
-        textView.setText(item.getApartmentID());
+        textView.setText(String.valueOf(item.getApartmentID()));
         imageView.setImageResource(item.getImageID());
         nameOfApartment.setText(item.getApartmentName());
         return view;
