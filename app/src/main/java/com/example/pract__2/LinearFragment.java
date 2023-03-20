@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -23,15 +24,6 @@ public class LinearFragment extends Fragment {
         super.onResume();
     }
 
-    public void clickRegBtnNew() {
-        Log.d("regBtnNew", "clicked0");
-        Bundle result = new Bundle();
-        result.putString("email", String.valueOf(((EditText) view.findViewById(R.id.editTextTextEmailAddress2)).getText()));
-        if (String.valueOf(((EditText) view.findViewById(R.id.editTextTextPassword2)).getText()) != null)
-            result.putString("passwd", String.valueOf(((EditText) view.findViewById(R.id.editTextTextPassword2)).getText()));
-        getParentFragmentManager().setFragmentResult("requestKey", result);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_linear, container, false);
@@ -40,6 +32,14 @@ public class LinearFragment extends Fragment {
             TextView textView = (TextView) view.findViewById(R.id.editTextTextEmailAddress2);
             textView.setText(bundle.getString("email"));
         }
+        view.findViewById(R.id.regBtnNew).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle result = new Bundle();
+                result.putString("email", String.valueOf(((EditText) view.findViewById(R.id.editTextTextEmailAddress2)).getText()));
+                Navigation.findNavController(view).navigate(R.id.action_linearFragment_to_loginFragment2,bundle);
+            }
+        });
         return view;
     }
 

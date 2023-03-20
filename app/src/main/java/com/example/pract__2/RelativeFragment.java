@@ -6,9 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 public class RelativeFragment extends Fragment {
-
+ View view;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,6 +17,13 @@ public class RelativeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_relative, container, false);
+        view = inflater.inflate(R.layout.fragment_relative, container, false);
+        view.findViewById(R.id.continueNewApartment).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_relativeFragment_to_mainMenuFragment);
+            }
+        });
+        return view;
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -58,6 +59,14 @@ public class MainMenuFragment extends Fragment {
             TextView textView = (TextView) view.findViewById(R.id.emailName);
             textView.setText(bundle.getString("email"));
         }
+
+        view.findViewById(R.id.addApartmentBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_relativeFragment);
+            }
+        });
+
         return view;
     }
 }

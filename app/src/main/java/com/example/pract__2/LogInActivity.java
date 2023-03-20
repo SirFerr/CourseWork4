@@ -10,60 +10,51 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class LogInActivity extends AppCompatActivity {
-    MainMenuFragment mainMenuFragment = new MainMenuFragment();
-    LinearFragment linearFragment = new LinearFragment();
-    RelativeFragment relativeFragment = new RelativeFragment();
-    LoginFragment loginFragment = new LoginFragment();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        getSupportFragmentManager().beginTransaction()
-                .setReorderingAllowed(true)
-                .add(R.id.fragment_container_view, loginFragment)
-                .commit();
 
     }
-    public void Change(View view) {
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        switch (view.getId()) {
-            case R.id.continueBtn: {
-                Bundle bundle = new Bundle();
-                bundle.putString("email", String.valueOf(((EditText) loginFragment
-                        .getView()
-                        .findViewById(R.id.editTextTextEmailAddress))
-                        .getText()));
-                mainMenuFragment.setArguments(bundle);
-                ft
-                        .replace(R.id.fragment_container_view, mainMenuFragment);
-                break;
-            }
-            case R.id.regBtn: {
-                Bundle bundle = new Bundle();
-                bundle.putString("email", String.valueOf(((EditText) loginFragment
-                        .getView()
-                        .findViewById(R.id.editTextTextEmailAddress))
-                        .getText()));
-                linearFragment.setArguments(bundle);
-                ft
-                        .replace(R.id.fragment_container_view, linearFragment);
-                break;
-            }
-            case R.id.addApartmentBtn: {
-                ft
-                        .replace(R.id.fragment_container_view, relativeFragment);
-                break;
-            }
-            case R.id.regBtnNew: {
-                Log.d("regBtnNew","click");
-                linearFragment.clickRegBtnNew();
-                ft
-                        .replace(R.id.fragment_container_view,loginFragment);
-                break;
-            }
-        }
-        ft.addToBackStack(null).commit();
-    }
+//    public void Change(View view) {
+//        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//        switch (view.getId()) {
+//            case R.id.continueBtn: {
+//                Bundle bundle = new Bundle();
+//                bundle.putString("email", String.valueOf(((EditText) loginFragment
+//                        .getView()
+//                        .findViewById(R.id.editTextTextEmailAddress))
+//                        .getText()));
+//                mainMenuFragment.setArguments(bundle);
+//                ft
+//                        .replace(R.id.fragment_container_view, mainMenuFragment);
+//                break;
+//            }
+//            case R.id.regBtn: {
+//                Bundle bundle = new Bundle();
+//                bundle.putString("email", String.valueOf(((EditText) loginFragment
+//                        .getView()
+//                        .findViewById(R.id.editTextTextEmailAddress))
+//                        .getText()));
+//                linearFragment.setArguments(bundle);
+//                ft
+//                        .replace(R.id.fragment_container_view, linearFragment);
+//                break;
+//            }
+//            case R.id.addApartmentBtn: {
+//                ft
+//                        .replace(R.id.fragment_container_view, relativeFragment);
+//                break;
+//            }
+//            case R.id.regBtnNew: {
+//                Log.d("regBtnNew","click");
+//                linearFragment.clickRegBtnNew();
+//                ft
+//                        .replace(R.id.fragment_container_view,loginFragment);
+//                break;
+//            }
+//        }
+//        ft.addToBackStack(null).commit();
+//    }
 }

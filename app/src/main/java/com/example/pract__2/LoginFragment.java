@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 public class LoginFragment extends Fragment {
 
@@ -27,12 +28,6 @@ public class LoginFragment extends Fragment {
         Toast.makeText(getActivity(), "onCreate", Toast.LENGTH_SHORT).show();
         Log.d(debugTAG, "onCreate");
         super.onCreate(savedInstanceState);
-        getFragmentManager().setFragmentResultListener("requestKey", this, (requestKey, result) -> {
-            ((EditText) view.findViewById(R.id.editTextTextEmailAddress)).setText(result.getString("email"));
-            if (result.getString("passwd") != null)
-                ((EditText) view.findViewById(R.id.editTextTextPassword)).setText(result.getString("passwd"));
-        });
-
     }
 
     @Override
@@ -43,34 +38,6 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        Toast.makeText(getActivity(), "onResume", Toast.LENGTH_SHORT).show();
-        Log.d(debugTAG, "onResume");
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        Toast.makeText(getActivity(), "onPause", Toast.LENGTH_SHORT).show();
-        Log.d(debugTAG, "onPause");
-        super.onPause();
-    }
-
-    @Override
-    public void onStop() {
-        Toast.makeText(getActivity(), "onStop", Toast.LENGTH_SHORT).show();
-        Log.d(debugTAG, "onStop");
-        super.onStop();
-    }
-
-    @Override
-    public void onDestroy() {
-        Toast.makeText(getActivity(), "onDestroy", Toast.LENGTH_SHORT).show();
-        Log.d(debugTAG, "onDestroy");
-        super.onDestroy();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_login, container, false);
         EditText editText = (EditText) view.findViewById(R.id.editTextTextEmailAddress);
@@ -78,6 +45,30 @@ public class LoginFragment extends Fragment {
         editText.setText(getResources().getString(R.string.testEmail));
         imageView.setImageResource(R.drawable.transparency_demonstration_1);
 
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            ((EditText) view.findViewById(R.id.editTextTextEmailAddress)).setText(bundle.getString("email"));
+        }
+        view.findViewById(R.id.continueBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("email", String.valueOf(((EditText) view
+                        .findViewById(R.id.editTextTextEmailAddress))
+                        .getText()));
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment,bundle);
+            }
+        });
+        view.findViewById(R.id.regBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("email", String.valueOf(((EditText) view
+                        .findViewById(R.id.editTextTextEmailAddress))
+                        .getText()));
+                Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_linearFragment, bundle);
+            }
+        });
 
         return view;
     }
