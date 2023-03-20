@@ -7,11 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LinearFragment extends Fragment {
     View view;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
     public void clickRegBtnNew() {
         Log.d("regBtnNew", "clicked0");

@@ -42,14 +42,17 @@
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         tools:layout_editor_absoluteY="30dp" />
 
-    <ListView
-        android:id="@+id/ListView"
-        android:layout_width="409dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecyclerViewCity"
+        android:layout_width="match_parent"
         android:layout_height="554dp"
+        app:layout_constraintVertical_bias="1.0"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
