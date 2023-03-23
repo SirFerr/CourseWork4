@@ -67,17 +67,22 @@ public class LoginFragment extends Fragment {
             ((EditText) view.findViewById(R.id.editTextTextEmailAddress)).setText(bundle.getString("email"));
         }
         view.findViewById(R.id.continueBtn).setOnClickListener(v -> {
+
             Bundle bundle12 = new Bundle();
             bundle12.putString("email", String.valueOf(((EditText) view
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
-            showNotification("Title", "Text");
 
+            showNotification("Title", String.valueOf(((EditText) view
+                    .findViewById(R.id.editTextTextEmailAddress))
+                    .getText()));
 
-            Intent intent = new Intent(getContext(), ServiceNew.class);
+            Intent intent = new Intent(getContext(), ServiceNew.class)
+                    .putExtra("email", String.valueOf(((EditText)
+                            view
+                                    .findViewById(R.id.editTextTextEmailAddress))
+                            .getText()));
             getActivity().startService(intent);
-            getActivity().stopService(intent);
-
 
 //                Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment,bundle);
         });

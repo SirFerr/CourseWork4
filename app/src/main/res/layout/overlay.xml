@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/black"
     android:orientation="horizontal">
 
 
@@ -9,7 +10,8 @@
         android:id="@+id/overlayTextView"
         android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/closeOverlayBtn"

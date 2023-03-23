@@ -10,21 +10,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 public class ServiceNew extends Service {
+
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(getBaseContext(), "31321", Toast.LENGTH_SHORT).show();
         WindowManager windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+
         final WindowManager.LayoutParams params = new
                 WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT,
@@ -33,14 +35,18 @@ public class ServiceNew extends Service {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
 
+
         View rootView = LayoutInflater.from(this).inflate(R.layout.overlay, null);
-        ((TextView) rootView.findViewById(R.id.overlayTextView)).setText("hello");
+
+        ((TextView) rootView.findViewById(R.id.overlayTextView)).setText(intent.getStringExtra("email"));
+
         windowManager.addView(rootView, params);
-        params.gravity = Gravity.BOTTOM | Gravity.CENTER;
+        params.gravity = Gravity.CENTER_VERTICAL | Gravity.CENTER;
         windowManager.updateViewLayout(rootView, params);
 
         rootView.findViewById(R.id.closeOverlayBtn).setOnClickListener(v -> {
             windowManager.removeView(rootView);
+            stopSelf();
         });
         return super.onStartCommand(intent, flags, startId);
     }
