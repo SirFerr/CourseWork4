@@ -2,6 +2,7 @@ package com.example.pract__2;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +20,7 @@ import androidx.navigation.Navigation;
 
 public class LoginFragment extends Fragment {
     private static final int NOTIFY_ID = 0;
-    private final String CHANNEL_ID = "channel_id";
+    private final String CHANNEL_ID = String.valueOf(R.string.default_notification_channel_id);
     View view;
 
     private void showNotification(String title, String text) {
@@ -32,7 +33,6 @@ public class LoginFragment extends Fragment {
         NotificationManagerCompat notificationManager =
                 NotificationManagerCompat.from(getContext());
         notificationManager.notify(NOTIFY_ID, builder.build());
-        // notificationId - должен быть уникальным для каждого уведомления в канале
     }
 
 
@@ -72,6 +72,12 @@ public class LoginFragment extends Fragment {
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
             showNotification("Title", "Text");
+
+
+            Intent intent = new Intent(getContext(), ServiceNew.class);
+            getActivity().startService(intent);
+            getActivity().stopService(intent);
+
 
 //                Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment,bundle);
         });
