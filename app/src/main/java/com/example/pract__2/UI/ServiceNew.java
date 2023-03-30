@@ -1,4 +1,4 @@
-package com.example.pract__2.data;
+package com.example.pract__2.UI;
 
 import android.app.Service;
 import android.content.Intent;

@@ -59,7 +59,6 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
             super(view);
             apartmentName = view.findViewById(R.id.apartmentName);
             apartmentID = view.findViewById(R.id.apartmentID);
-
         }
 
     }

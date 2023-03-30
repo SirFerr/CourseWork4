@@ -31,7 +31,7 @@ public class RegistrationFragment extends Fragment {
         view.findViewById(R.id.regBtnNew).setOnClickListener(v -> {
             Bundle result = new Bundle();
             result.putString("email", String.valueOf(((EditText) view.findViewById(R.id.editTextTextEmailAddress2)).getText()));
-            Navigation.findNavController(view).navigate(R.id.action_linearFragment_to_loginFragment2, bundle);
+            Navigation.findNavController(view).navigate(R.id.action_registrationFragment_to_loginFragment, bundle);
         });
         return view;
     }

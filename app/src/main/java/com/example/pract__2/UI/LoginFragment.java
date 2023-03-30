@@ -75,14 +75,14 @@ public class LoginFragment extends Fragment {
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
 
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment, bundle);
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment, bundle);
         });
         view.findViewById(R.id.regBtn).setOnClickListener(v -> {
             Bundle bundle1 = new Bundle();
             bundle1.putString("email", String.valueOf(((EditText) view
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_linearFragment, bundle1);
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registrationFragment, bundle1);
         });
 
         return view;

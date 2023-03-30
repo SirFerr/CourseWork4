@@ -21,7 +21,7 @@ public class AddApartmentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_add_apartment, container, false);
-        view.findViewById(R.id.continueNewApartment).setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_relativeFragment_to_mainMenuFragment));
+        view.findViewById(R.id.continueNewApartment).setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_addApartmentFragment_to_mainMenuFragment));
         return view;
     }
 }

@@ -18,7 +18,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
         <service
-            android:name=".data.ServiceNew"
+            android:name=".UI.ServiceNew"
             android:enabled="true"
             android:exported="true" />
         <activity

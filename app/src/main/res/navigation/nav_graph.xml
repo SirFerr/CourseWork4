@@ -2,40 +2,47 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment2">
+    app:startDestination="@id/loginFragment">
     <fragment
-        android:id="@+id/loginFragment2"
+        android:id="@+id/loginFragment"
         android:name="com.example.pract__2.UI.LoginFragment"
         android:label="LoginFragment">
         <action
-            android:id="@+id/action_loginFragment2_to_mainMenuFragment"
+            android:id="@+id/action_loginFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
         <action
-            android:id="@+id/action_loginFragment2_to_linearFragment"
-            app:destination="@id/linearFragment" />
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/apartmentFragment"
+        android:name="com.example.pract__2.UI.ApartmentFragment"
+        android:label="MainMenuFragment"></fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.example.pract__2.UI.MainMenuFragment"
         android:label="MainMenuFragment">
         <action
-            android:id="@+id/action_mainMenuFragment_to_relativeFragment"
-            app:destination="@id/relativeFragment" />
+            android:id="@+id/action_mainMenuFragment_to_addApartmentFragment"
+            app:destination="@id/addApartmentFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_apartmentFragment"
+            app:destination="@id/apartmentFragment" />
     </fragment>
     <fragment
-        android:id="@+id/relativeFragment"
+        android:id="@+id/addApartmentFragment"
         android:name="com.example.pract__2.UI.AddApartmentFragment"
         android:label="RelativeFragment">
         <action
-            android:id="@+id/action_relativeFragment_to_mainMenuFragment"
+            android:id="@+id/action_addApartmentFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
     <fragment
-        android:id="@+id/linearFragment"
+        android:id="@+id/registrationFragment"
         android:name="com.example.pract__2.UI.RegistrationFragment"
         android:label="LinearFragment">
         <action
-            android:id="@+id/action_linearFragment_to_loginFragment2"
-            app:destination="@id/loginFragment2" />
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
