@@ -1,4 +1,4 @@
-package com.example.pract__2;
+package com.example.pract__2.UI;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.pract__2.R;
+import com.example.pract__2.data.Apartment;
 
 import java.util.ArrayList;
 import java.util.List;

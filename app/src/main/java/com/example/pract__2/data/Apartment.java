@@ -1,9 +1,9 @@
-package com.example.pract__2;
+package com.example.pract__2.data;
 
 public class Apartment {
-    private String apartmentID;
-    private int imageID;
-    private String apartmentName;
+    private final String apartmentID;
+    private final int imageID;
+    private final String apartmentName;
 
     public Apartment(String apartmentID, int imageID, String apartmentName) {
         this.apartmentID = apartmentID;
@@ -22,5 +22,5 @@ public class Apartment {
     public String getApartmentName() {
         return apartmentName;
     }
-    
+
 }

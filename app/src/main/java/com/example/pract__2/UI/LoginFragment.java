@@ -1,4 +1,4 @@
-package com.example.pract__2;
+package com.example.pract__2.UI;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,6 +15,8 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.example.pract__2.R;
 
 public class LoginFragment extends Fragment {
     private static final int NOTIFY_ID = 0;
@@ -72,13 +74,6 @@ public class LoginFragment extends Fragment {
             showNotification("Title", String.valueOf(((EditText) view
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
-
-//            Intent intent = new Intent(getContext(), ServiceNew.class)
-//                    .putExtra("email", String.valueOf(((EditText)
-//                            view
-//                                    .findViewById(R.id.editTextTextEmailAddress))
-//                            .getText()));
-//            getActivity().startService(intent);
 
             Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment, bundle);
         });

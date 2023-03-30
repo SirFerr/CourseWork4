@@ -1,4 +1,4 @@
-package com.example.pract__2;
+package com.example.pract__2.UI;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.example.pract__2.R;
 
 public class RegistrationFragment extends Fragment {
     View view;

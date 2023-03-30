@@ -1,14 +1,16 @@
-package com.example.pract__2;
+package com.example.pract__2.UI;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.pract__2.R;
+import com.example.pract__2.data.Apartment;
 
 import java.util.List;
 
@@ -34,7 +36,6 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(RecyclerViewMainMenuAdapter.ViewHolder holder, int position) {
         Apartment apartment = apartments.get(position);
-        holder.imageView.setImageResource(apartment.getImageID());
         holder.apartmentID.setText(String.valueOf(apartment.getApartmentID()));
         holder.apartmentName.setText(String.valueOf(apartment.getApartmentName()));
 
@@ -52,12 +53,10 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        final ImageView imageView;
         final TextView apartmentName, apartmentID;
 
         ViewHolder(View view) {
             super(view);
-            imageView = view.findViewById(R.id.ImageViewList);
             apartmentName = view.findViewById(R.id.apartmentName);
             apartmentID = view.findViewById(R.id.apartmentID);
 

@@ -1,4 +1,4 @@
-package com.example.pract__2;
+package com.example.pract__2.data;
 
 import android.app.Service;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+
+import com.example.pract__2.R;
 
 public class ServiceNew extends Service {
 
