@@ -2,7 +2,6 @@ package com.example.pract__2;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
@@ -57,10 +55,8 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_login, container, false);
-        EditText editText = (EditText) view.findViewById(R.id.editTextTextEmailAddress);
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        EditText editText = view.findViewById(R.id.editTextTextEmailAddress);
         editText.setText(getResources().getString(R.string.testEmail));
-        imageView.setImageResource(R.drawable.cabinetlog);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -77,14 +73,14 @@ public class LoginFragment extends Fragment {
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
 
-            Intent intent = new Intent(getContext(), ServiceNew.class)
-                    .putExtra("email", String.valueOf(((EditText)
-                            view
-                                    .findViewById(R.id.editTextTextEmailAddress))
-                            .getText()));
-            getActivity().startService(intent);
+//            Intent intent = new Intent(getContext(), ServiceNew.class)
+//                    .putExtra("email", String.valueOf(((EditText)
+//                            view
+//                                    .findViewById(R.id.editTextTextEmailAddress))
+//                            .getText()));
+//            getActivity().startService(intent);
 
-//                Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment,bundle);
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment2_to_mainMenuFragment, bundle);
         });
         view.findViewById(R.id.regBtn).setOnClickListener(v -> {
             Bundle bundle1 = new Bundle();

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/apartmentName"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Название квартиры"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/apartmentAdress"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/apartmentName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Адрес"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/apartmentNumber"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/apartmentAdress"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Номер квартиры"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/payerСode"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/apartmentNumber"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Код плательщика"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/energyCode"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/payerСode"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Эл. энергия лицевой счет"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/energyDeviceCode"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/energyCode"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="14dp"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Номер прибора учета эл. энергии"
+        android:inputType="text" />
+
+    <Button
+        android:id="@+id/continueNewApartment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_below="@id/energyDeviceCode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        android:layout_weight="1"
+        android:backgroundTint="@color/continueBtn"
+        android:ems="10"
+        android:text="Продолжить" />
+
+</LinearLayout>

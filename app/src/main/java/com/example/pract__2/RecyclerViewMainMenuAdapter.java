@@ -12,37 +12,33 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerViewMainMenuAdapter.ViewHolder> {
 
     private final LayoutInflater inflater;
     private final OnStateClickListener onClickListener;
     private final List<Apartment> apartments;
-    public RecyclerViewAdapter(Context context, List<Apartment> apartments, OnStateClickListener onClickListener) {
-        this.inflater =LayoutInflater.from(context);
+
+    public RecyclerViewMainMenuAdapter(Context context, List<Apartment> apartments, OnStateClickListener onClickListener) {
+        this.inflater = LayoutInflater.from(context);
         this.onClickListener = onClickListener;
         this.apartments = apartments;
     }
 
     @NonNull
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.list_item, parent, false);
+    public RecyclerViewMainMenuAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.list_item_main_menu, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewMainMenuAdapter.ViewHolder holder, int position) {
         Apartment apartment = apartments.get(position);
         holder.imageView.setImageResource(apartment.getImageID());
         holder.apartmentID.setText(String.valueOf(apartment.getApartmentID()));
         holder.apartmentName.setText(String.valueOf(apartment.getApartmentName()));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickListener.onStateClick(apartment, position);
-            }
-        });
+        holder.itemView.setOnClickListener(v -> onClickListener.onStateClick(apartment, position));
     }
 
     @Override

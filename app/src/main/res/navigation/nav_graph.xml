@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment2">
     <fragment
         android:id="@+id/loginFragment2"
         android:name="com.example.pract__2.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment2_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
@@ -18,23 +17,23 @@
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.example.pract__2.MainMenuFragment"
-        android:label="MainMenuFragment" >
+        android:label="MainMenuFragment">
         <action
             android:id="@+id/action_mainMenuFragment_to_relativeFragment"
             app:destination="@id/relativeFragment" />
     </fragment>
     <fragment
         android:id="@+id/relativeFragment"
-        android:name="com.example.pract__2.RelativeFragment"
-        android:label="RelativeFragment" >
+        android:name="com.example.pract__2.AddApartmentFragment"
+        android:label="RelativeFragment">
         <action
             android:id="@+id/action_relativeFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
     <fragment
         android:id="@+id/linearFragment"
-        android:name="com.example.pract__2.LinearFragment"
-        android:label="LinearFragment" >
+        android:name="com.example.pract__2.RegistrationFragment"
+        android:label="LinearFragment">
         <action
             android:id="@+id/action_linearFragment_to_loginFragment2"
             app:destination="@id/loginFragment2" />

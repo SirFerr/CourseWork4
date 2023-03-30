@@ -5,9 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,15 +34,15 @@ public class MainMenuFragment extends Fragment {
             apartments.add(new Apartment(String.valueOf(i), R.drawable.cabinetlog, String.valueOf(i + 1)));
         }
 
-        RecyclerViewAdapter.OnStateClickListener onClickListener = (state, position) -> {
+        RecyclerViewMainMenuAdapter.OnStateClickListener onClickListener = (state, position) -> {
             Toast.makeText(getContext(), state.getApartmentName(),
                     Toast.LENGTH_SHORT).show();
             Log.d("RecyclerView", state.getApartmentName());
         };
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(), apartments, onClickListener);
+        RecyclerViewMainMenuAdapter recyclerViewMainMenuAdapter = new RecyclerViewMainMenuAdapter(getContext(), apartments, onClickListener);
         RecyclerView recyclerView = view.findViewById(R.id.RecyclerViewCity);
-        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerView.setAdapter(recyclerViewMainMenuAdapter);
     }
 
     @Override
@@ -56,16 +53,11 @@ public class MainMenuFragment extends Fragment {
 
         Bundle bundle = getArguments();
         if (bundle != null) {
-            TextView textView = (TextView) view.findViewById(R.id.emailName);
+            TextView textView = view.findViewById(R.id.emailName);
             textView.setText(bundle.getString("email"));
         }
 
-        view.findViewById(R.id.addApartmentBtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_relativeFragment);
-            }
-        });
+        view.findViewById(R.id.addApartmentBtn).setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_relativeFragment));
 
         return view;
     }

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-public class RelativeFragment extends Fragment {
+public class AddApartmentFragment extends Fragment {
     View view;
 
     @Override
@@ -18,7 +18,7 @@ public class RelativeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_relative, container, false);
+        view = inflater.inflate(R.layout.fragment_add_apartment, container, false);
         view.findViewById(R.id.continueNewApartment).setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_relativeFragment_to_mainMenuFragment));
         return view;
     }
