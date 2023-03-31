@@ -1,10 +1,10 @@
-package com.example.pract__2.UI;
+package com.example.MobileDevelopPractice.views;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.pract__2.R;
+import com.example.MobileDevolopPractice.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override

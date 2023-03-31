@@ -1,8 +1,5 @@
-package com.example.pract__2.UI;
+package com.example.MobileDevelopPractice.views;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,30 +8,16 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.pract__2.R;
+import com.example.MobileDevolopPractice.R;
+
 
 public class LoginFragment extends Fragment {
     private static final int NOTIFY_ID = 0;
     private final String CHANNEL_ID = String.valueOf(R.string.default_notification_channel_id);
     View view;
-
-    private void showNotification(String title, String text) {
-        NotificationCompat.Builder builder = new
-                NotificationCompat.Builder(getContext(), CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle(title)
-                .setContentText(text)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        NotificationManagerCompat notificationManager =
-                NotificationManagerCompat.from(getContext());
-        notificationManager.notify(NOTIFY_ID, builder.build());
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,16 +25,8 @@ public class LoginFragment extends Fragment {
         Toast.makeText(getActivity(), "onCreate", Toast.LENGTH_SHORT).show();
         Log.d("onCreate", "onCreate");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            // Создание канала уведомлений
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "Channel name",
-                    NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription("Channel description");
-            NotificationManager notificationManager = getActivity().getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-        }
-
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -71,11 +46,7 @@ public class LoginFragment extends Fragment {
                     .findViewById(R.id.editTextTextEmailAddress))
                     .getText()));
 
-            showNotification("Title", String.valueOf(((EditText) view
-                    .findViewById(R.id.editTextTextEmailAddress))
-                    .getText()));
-
-            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment, bundle);
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment, bundle12);
         });
         view.findViewById(R.id.regBtn).setOnClickListener(v -> {
             Bundle bundle1 = new Bundle();

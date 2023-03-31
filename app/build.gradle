@@ -3,11 +3,15 @@ plugins {
 }
 
 android {
-    namespace 'com.example.pract__2'
+    namespace 'com.example.MobileDevolopPractice'
     compileSdk 33
 
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
-        applicationId "com.example.pract__2"
+        applicationId 'com.example.MobileDevolopPractice'
         minSdk 24
         targetSdk 33
         versionCode 1

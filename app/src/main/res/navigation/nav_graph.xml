@@ -5,7 +5,7 @@
     app:startDestination="@id/loginFragment">
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.pract__2.UI.LoginFragment"
+        android:name="com.example.MobileDevelopPractice.views.LoginFragment"
         android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_mainMenuFragment"
@@ -16,11 +16,11 @@
     </fragment>
     <fragment
         android:id="@+id/apartmentFragment"
-        android:name="com.example.pract__2.UI.ApartmentFragment"
+        android:name="com.example.MobileDevelopPractice.views.ApartmentFragment"
         android:label="MainMenuFragment"></fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
-        android:name="com.example.pract__2.UI.MainMenuFragment"
+        android:name="com.example.MobileDevelopPractice.views.MainMenuFragment"
         android:label="MainMenuFragment">
         <action
             android:id="@+id/action_mainMenuFragment_to_addApartmentFragment"
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/addApartmentFragment"
-        android:name="com.example.pract__2.UI.AddApartmentFragment"
+        android:name="com.example.MobileDevelopPractice.views.AddApartmentFragment"
         android:label="RelativeFragment">
         <action
             android:id="@+id/action_addApartmentFragment_to_mainMenuFragment"
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.pract__2.UI.RegistrationFragment"
+        android:name="com.example.MobileDevelopPractice.views.RegistrationFragment"
         android:label="LinearFragment">
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"

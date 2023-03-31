@@ -1,4 +1,4 @@
-package com.example.pract__2.UI;
+package com.example.MobileDevelopPractice.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.pract__2.R;
+import com.example.MobileDevolopPractice.R;
 
 public class ApartmentFragment extends Fragment {
 

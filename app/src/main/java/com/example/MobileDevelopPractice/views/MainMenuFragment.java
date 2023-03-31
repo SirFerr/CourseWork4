@@ -1,4 +1,4 @@
-package com.example.pract__2.UI;
+package com.example.MobileDevelopPractice.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,11 +9,13 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pract__2.R;
-import com.example.pract__2.data.Apartment;
+import com.example.MobileDevelopPractice.model.Apartment;
+import com.example.MobileDevelopPractice.viewmodels.ApartmentViewModel;
+import com.example.MobileDevolopPractice.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +34,15 @@ public class MainMenuFragment extends Fragment {
     public void onResume() {
         super.onResume();
         List<Apartment> apartments = new ArrayList<Apartment>();
-        for (int i = 1; i < 200; i++) {
-            apartments.add(new Apartment(String.valueOf(i), R.drawable.cabinetlog, String.valueOf(i + 1)));
+        ApartmentViewModel model = new ViewModelProvider(this).get(ApartmentViewModel.class);
+        for (int i = 1; i < 10; i++) {
+            apartments.add(new Apartment(String.valueOf(i), String.valueOf(i + 1)));
         }
+        
+        model.addApartment("id", "name");
+        model.getApartmentUI().observe(this, apartmentUI -> {
+            apartments.add(apartmentUI);
+        });
 
         RecyclerViewMainMenuAdapter.OnStateClickListener onClickListener = (state, position) -> {
             Toast.makeText(getContext(), state.getApartmentName(),
@@ -62,7 +70,8 @@ public class MainMenuFragment extends Fragment {
             textView.setText(bundle.getString("email"));
         }
 
-        view.findViewById(R.id.addApartmentBtn).setOnClickListener(v -> Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_addApartmentFragment));
+        view.findViewById(R.id.addApartmentBtn).setOnClickListener(
+                v -> Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_addApartmentFragment));
 
         return view;
     }

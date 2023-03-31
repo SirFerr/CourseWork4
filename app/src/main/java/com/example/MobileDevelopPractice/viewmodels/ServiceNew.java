@@ -1,4 +1,4 @@
-package com.example.pract__2.UI;
+package com.example.MobileDevelopPractice.viewmodels;
 
 import android.app.Service;
 import android.content.Intent;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import com.example.pract__2.R;
+import com.example.MobileDevolopPractice.R;
 
 public class ServiceNew extends Service {
 
