@@ -14,7 +14,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.MobileDevelopPractice.model.Apartment;
-import com.example.MobileDevelopPractice.viewmodels.ApartmentViewModel;
+import com.example.MobileDevelopPractice.viewmodels.ViewModel;
 import com.example.MobileDevolopPractice.R;
 
 import java.util.ArrayList;
@@ -33,15 +33,16 @@ public class MainMenuFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
         List<Apartment> apartments = new ArrayList<Apartment>();
-        ApartmentViewModel model = new ViewModelProvider(this).get(ApartmentViewModel.class);
+        ViewModel model = new ViewModelProvider(this).get(ViewModel.class);
         for (int i = 1; i < 10; i++) {
             apartments.add(new Apartment(String.valueOf(i), String.valueOf(i + 1)));
         }
-        
+
         model.addApartment("id", "name");
         model.getApartmentUI().observe(this, apartmentUI -> {
-            apartments.add(apartmentUI);
+            apartments.add(apartmentUI.getApartment());
         });
 
         RecyclerViewMainMenuAdapter.OnStateClickListener onClickListener = (state, position) -> {

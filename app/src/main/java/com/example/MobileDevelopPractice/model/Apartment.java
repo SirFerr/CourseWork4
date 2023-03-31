@@ -1,8 +1,8 @@
 package com.example.MobileDevelopPractice.model;
 
 public class Apartment {
-    private final String apartmentID;
-    private final String apartmentName;
+    private String apartmentID;
+    private String apartmentName;
 
     public Apartment(String apartmentID, String apartmentName) {
         this.apartmentID = apartmentID;
@@ -13,8 +13,16 @@ public class Apartment {
         return apartmentID;
     }
 
+    public void setApartmentID(String apartmentID) {
+        this.apartmentID = apartmentID;
+    }
+
     public String getApartmentName() {
         return apartmentName;
+    }
+
+    public void setApartmentName(String apartmentName) {
+        this.apartmentName = apartmentName;
     }
 
 }

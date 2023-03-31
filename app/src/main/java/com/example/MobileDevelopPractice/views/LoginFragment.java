@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.example.MobileDevelopPractice.viewmodels.ViewModel;
 import com.example.MobileDevolopPractice.R;
 
 
@@ -27,11 +28,22 @@ public class LoginFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
+        ViewModel userViewModel = new ViewModel();
+
+        userViewModel.addUser(getResources().getString(R.string.testEmail), "hello");
+        userViewModel.getUserID().observe(this, userID -> {
+            EditText editText = view.findViewById(R.id.editTextTextEmailAddress);
+            editText.setText(userID.getUser().getEmail());
+            EditText editText1 = view.findViewById(R.id.editTextTextPassword);
+            editText1.setText(userID.getUser().getPassword());
+        });
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_login, container, false);
+
         EditText editText = view.findViewById(R.id.editTextTextEmailAddress);
         editText.setText(getResources().getString(R.string.testEmail));
 
