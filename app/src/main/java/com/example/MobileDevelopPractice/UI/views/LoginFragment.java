@@ -36,10 +36,12 @@ public class LoginFragment extends Fragment {
             String filename = "appSpecificStorage";
             File file = new File(getActivity().getFilesDir() + filename);
             Log.d(filename, String.valueOf(file.createNewFile()));
+            file.delete();
         } catch (
                 IOException e) {
             throw new RuntimeException(e);
         }
+
 
         //externalStorage
         try {
