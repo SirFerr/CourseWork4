@@ -1,11 +1,11 @@
-package com.example.MobileDevelopPractice.viewmodels;
+package com.example.MobileDevelopPractice.UI.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.MobileDevelopPractice.model.Apartment;
-import com.example.MobileDevelopPractice.model.User;
-import com.example.MobileDevelopPractice.repository.Repository;
+import com.example.MobileDevelopPractice.data.repository.Repository;
+import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.Apartment;
+import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.User;
 
 public class ViewModel extends androidx.lifecycle.ViewModel {
 

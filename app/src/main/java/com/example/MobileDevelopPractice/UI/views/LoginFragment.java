@@ -1,4 +1,4 @@
-package com.example.MobileDevelopPractice.views;
+package com.example.MobileDevelopPractice.UI.views;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,9 +9,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.MobileDevelopPractice.viewmodels.ViewModel;
+import com.example.MobileDevelopPractice.UI.viewmodels.ViewModel;
 import com.example.MobileDevolopPractice.R;
 
 
@@ -28,7 +29,7 @@ public class LoginFragment extends Fragment {
 
         super.onCreate(savedInstanceState);
 
-        ViewModel userViewModel = new ViewModel();
+        ViewModel userViewModel = new ViewModelProvider(this).get(ViewModel.class);
 
         userViewModel.addUser(getResources().getString(R.string.testEmail), "hello");
         userViewModel.getUserID().observe(this, userID -> {

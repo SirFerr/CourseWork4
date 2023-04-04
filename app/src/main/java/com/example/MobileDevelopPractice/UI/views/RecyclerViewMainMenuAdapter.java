@@ -1,4 +1,4 @@
-package com.example.MobileDevelopPractice.views;
+package com.example.MobileDevelopPractice.UI.views;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.MobileDevelopPractice.model.Apartment;
+import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.Apartment;
 import com.example.MobileDevolopPractice.R;
 
 import java.util.List;

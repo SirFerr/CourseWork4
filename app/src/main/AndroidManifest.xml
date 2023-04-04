@@ -18,7 +18,7 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
         <activity
-            android:name="com.example.MobileDevelopPractice.views.MainActivity"
+            android:name="com.example.MobileDevelopPractice.UI.views.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

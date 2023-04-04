@@ -1,4 +1,4 @@
-package com.example.MobileDevelopPractice.views;
+package com.example.MobileDevelopPractice.UI.views;
 
 import android.os.Bundle;
 

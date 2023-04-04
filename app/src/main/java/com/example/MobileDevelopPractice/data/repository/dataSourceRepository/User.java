@@ -1,4 +1,4 @@
-package com.example.MobileDevelopPractice.model;
+package com.example.MobileDevelopPractice.data.repository.dataSourceRepository;
 
 public class User {
     private String email;

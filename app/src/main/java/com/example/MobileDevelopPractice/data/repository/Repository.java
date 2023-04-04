@@ -1,7 +1,7 @@
-package com.example.MobileDevelopPractice.repository;
+package com.example.MobileDevelopPractice.data.repository;
 
-import com.example.MobileDevelopPractice.model.Apartment;
-import com.example.MobileDevelopPractice.model.User;
+import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.Apartment;
+import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.User;
 
 public class Repository {
     private Apartment apartment;

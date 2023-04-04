@@ -1,4 +1,4 @@
-package com.example.MobileDevelopPractice.views;
+package com.example.MobileDevelopPractice.UI.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.MobileDevelopPractice.model.Apartment;
-import com.example.MobileDevelopPractice.viewmodels.ViewModel;
+import com.example.MobileDevelopPractice.UI.viewmodels.ViewModel;
+import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.Apartment;
 import com.example.MobileDevolopPractice.R;
 
 import java.util.ArrayList;

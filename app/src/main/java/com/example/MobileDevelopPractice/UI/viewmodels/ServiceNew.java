@@ -1,4 +1,4 @@
-package com.example.MobileDevelopPractice.viewmodels;
+package com.example.MobileDevelopPractice.UI.viewmodels;
 
 import android.app.Service;
 import android.content.Intent;
