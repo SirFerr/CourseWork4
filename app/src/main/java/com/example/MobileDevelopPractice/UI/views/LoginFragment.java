@@ -12,8 +12,10 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.room.Room;
 
 import com.example.MobileDevelopPractice.UI.viewmodels.ViewModel;
+import com.example.MobileDevelopPractice.data.ApartmentDB.AppDatabase;
 import com.example.MobileDevolopPractice.R;
 
 import java.io.File;
@@ -73,6 +75,19 @@ public class LoginFragment extends Fragment {
         editor.apply();
         Log.d("SharedPreferences", sharedPref.getString("test", ""));
         super.onCreate(savedInstanceState);
+
+        //Room
+        AppDatabase db = Room.databaseBuilder(getActivity().getApplicationContext(),
+                AppDatabase.class, "apartments").allowMainThreadQueries().build();
+
+        int id = 1000;
+        if (db.apartmentDao().findById(id).apartmentName == null) {
+            db.apartmentDao().insert(id, "name1");
+        } else {
+            db.apartmentDao().delete(id);
+            db.apartmentDao().insert(id, "name2");
+        }
+        Log.d("activity", db.apartmentDao().findById(id).apartmentName);
 
 
         ViewModel userViewModel = new ViewModelProvider(this).get(ViewModel.class);
