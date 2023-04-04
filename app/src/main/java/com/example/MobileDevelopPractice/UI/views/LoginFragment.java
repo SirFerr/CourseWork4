@@ -1,12 +1,13 @@
 package com.example.MobileDevelopPractice.UI.views;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -14,6 +15,12 @@ import androidx.navigation.Navigation;
 
 import com.example.MobileDevelopPractice.UI.viewmodels.ViewModel;
 import com.example.MobileDevolopPractice.R;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 
 public class LoginFragment extends Fragment {
@@ -24,13 +31,49 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        Toast.makeText(getActivity(), "onCreate", Toast.LENGTH_SHORT).show();
-        Log.d("onCreate", "onCreate");
+        //appSpecificStorage
+        try {
+            String filename = "appSpecificStorage";
+            File file = new File(getActivity().getFilesDir() + filename);
+            Log.d(filename, String.valueOf(file.createNewFile()));
+        } catch (
+                IOException e) {
+            throw new RuntimeException(e);
+        }
 
+        //externalStorage
+        try {
+            String filename = "externalStorage";
+            String str = "test data";
+            FileOutputStream fOut = getActivity().openFileOutput(filename, Context.MODE_PRIVATE);
+            fOut.write(str.getBytes());
+            fOut.close();
+            FileInputStream fin = getActivity().openFileInput(filename);
+            int c;
+            String temp = "";
+            while ((c = fin.read()) != -1) {
+                temp = temp + (char) c;
+            }
+            fin.close();
+            Log.d(filename, temp);
+        } catch (
+                FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (
+                IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        //SharedPreferences
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("test", "test data");
+        editor.apply();
+        Log.d("SharedPreferences", sharedPref.getString("test", ""));
         super.onCreate(savedInstanceState);
 
-        ViewModel userViewModel = new ViewModelProvider(this).get(ViewModel.class);
 
+        ViewModel userViewModel = new ViewModelProvider(this).get(ViewModel.class);
         userViewModel.addUser(getResources().getString(R.string.testEmail), "hello");
         userViewModel.getUserID().observe(this, userID -> {
             EditText editText = view.findViewById(R.id.editTextTextEmailAddress);
@@ -68,6 +111,7 @@ public class LoginFragment extends Fragment {
                     .getText()));
             Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_registrationFragment, bundle1);
         });
+
 
         return view;
     }
