@@ -20,7 +20,6 @@ import com.example.MobileDevolopPractice.R;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -61,9 +60,6 @@ public class LoginFragment extends Fragment {
             fin.close();
             Log.d(filename, temp);
         } catch (
-                FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (
                 IOException e) {
             throw new RuntimeException(e);
         }
@@ -81,11 +77,12 @@ public class LoginFragment extends Fragment {
                 AppDatabase.class, "apartments").allowMainThreadQueries().build();
 
         int id = 1000;
-        if (db.apartmentDao().findById(id).apartmentName == null) {
-            db.apartmentDao().insert(id, "name1");
+        String tempName = "tempName";
+        if (db.apartmentDao().findById(id).apartmentId == id) {
+            db.apartmentDao().insert(id, tempName);
         } else {
             db.apartmentDao().delete(id);
-            db.apartmentDao().insert(id, "name2");
+            db.apartmentDao().update(id, tempName);
         }
         Log.d("activity", db.apartmentDao().findById(id).apartmentName);
 

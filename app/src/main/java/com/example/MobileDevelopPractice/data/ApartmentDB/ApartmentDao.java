@@ -18,9 +18,9 @@ public interface ApartmentDao {
     @Query("SELECT * FROM Apartment WHERE name LIKE :apartmentName LIMIT 1")
     Apartment findByName(String apartmentName);
 
-    @Query("SELECT * FROM Apartment WHERE apartmentId LIKE :id LIMIT 1")
+    @Query("SELECT * FROM Apartment WHERE apartmentId LIKE :id")
     Apartment findById(int id);
-
+    
     @Insert
     void insertAll(Apartment... apartments);
 
@@ -32,4 +32,7 @@ public interface ApartmentDao {
 
     @Query("DELETE FROM Apartment WHERE apartmentId LIKE :id")
     void delete(int id);
+
+    @Query("UPDATE Apartment SET name =:name WHERE apartmentId LIKE :id")
+    void update(int id, String name);
 }
