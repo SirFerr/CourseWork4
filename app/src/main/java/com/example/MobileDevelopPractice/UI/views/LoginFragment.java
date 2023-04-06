@@ -53,12 +53,12 @@ public class LoginFragment extends Fragment {
             fOut.close();
             FileInputStream fin = getActivity().openFileInput(filename);
             int c;
-            String temp = "";
+            StringBuilder temp = new StringBuilder();
             while ((c = fin.read()) != -1) {
-                temp = temp + (char) c;
+                temp.append((char) c);
             }
             fin.close();
-            Log.d(filename, temp);
+            Log.d(filename, temp.toString());
         } catch (
                 IOException e) {
             throw new RuntimeException(e);
