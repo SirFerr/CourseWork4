@@ -12,7 +12,6 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-import androidx.room.Room;
 
 import com.example.MobileDevelopPractice.UI.viewmodels.ViewModel;
 import com.example.MobileDevelopPractice.data.ApartmentDB.AppDatabase;
@@ -27,6 +26,7 @@ import java.io.IOException;
 public class LoginFragment extends Fragment {
     private static final int NOTIFY_ID = 0;
     private final String CHANNEL_ID = String.valueOf(R.string.default_notification_channel_id);
+
     View view;
 
     @Override
@@ -73,9 +73,8 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         //Room
-        AppDatabase db = Room.databaseBuilder(getActivity().getApplicationContext(),
-                AppDatabase.class, "apartments").allowMainThreadQueries().build();
-
+        AppDatabase db = AppDatabase.getDatabase(getActivity().getApplicationContext());
+        
         int id = 1000;
         String tempName = "tempName";
         if (db.apartmentDao().findById(id).apartmentId == id) {
