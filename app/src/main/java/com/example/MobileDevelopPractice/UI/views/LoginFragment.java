@@ -10,11 +10,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.MobileDevelopPractice.UI.viewmodels.ViewModel;
-import com.example.MobileDevelopPractice.data.ApartmentDB.AppDatabase;
 import com.example.MobileDevolopPractice.R;
 
 import java.io.File;
@@ -71,30 +68,6 @@ public class LoginFragment extends Fragment {
         editor.apply();
         Log.d("SharedPreferences", sharedPref.getString("test", ""));
         super.onCreate(savedInstanceState);
-
-        //Room
-        AppDatabase db = AppDatabase.getDatabase(getActivity().getApplicationContext());
-        
-        int id = 1000;
-        String tempName = "tempName";
-        if (db.apartmentDao().findById(id).apartmentId == id) {
-            db.apartmentDao().insert(id, tempName);
-        } else {
-            db.apartmentDao().delete(id);
-            db.apartmentDao().update(id, tempName);
-        }
-        Log.d("activity", db.apartmentDao().findById(id).apartmentName);
-
-
-        ViewModel userViewModel = new ViewModelProvider(this).get(ViewModel.class);
-        userViewModel.addUser(getResources().getString(R.string.testEmail), "hello");
-        userViewModel.getUserID().observe(this, userID -> {
-            EditText editText = view.findViewById(R.id.editTextTextEmailAddress);
-            editText.setText(userID.getUser().getEmail());
-            EditText editText1 = view.findViewById(R.id.editTextTextPassword);
-            editText1.setText(userID.getUser().getPassword());
-        });
-
     }
 
     @Override

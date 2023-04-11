@@ -26,9 +26,9 @@ public class ApartmentFragment extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             TextView textView = view.findViewById(R.id.IdAppartment);
-            textView.setText(bundle.getString("apartmentId"));
+            textView.setText(bundle.getString("id"));
             TextView textView2 = view.findViewById(R.id.NameApartment);
-            textView2.setText(bundle.getString("apartmentName"));
+            textView2.setText(bundle.getString("name"));
         }
         return view;
     }

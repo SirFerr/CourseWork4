@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.MobileDevelopPractice.data.repository.dataSourceRepository.Apartment;
+import com.example.MobileDevelopPractice.data.ApartmentDB.Apartment;
 import com.example.MobileDevolopPractice.R;
 
 import java.util.List;
@@ -36,9 +36,8 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(RecyclerViewMainMenuAdapter.ViewHolder holder, int position) {
         Apartment apartment = apartments.get(position);
-        holder.apartmentID.setText(String.valueOf(apartment.getApartmentID()));
-        holder.apartmentName.setText(String.valueOf(apartment.getApartmentName()));
-
+        holder.apartmentID.setText(String.valueOf(apartment.apartmentId));
+        holder.apartmentName.setText(String.valueOf(apartment.apartmentName));
         holder.itemView.setOnClickListener(v -> onClickListener.onStateClick(apartment, position));
     }
 
