@@ -1,7 +1,6 @@
-package com.example.MobileDevelopPractice.data.ApartmentDB;
+package com.example.MobileDevelopPractice.data.UserDB;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -12,36 +11,35 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Apartment.class}, version = 1, exportSchema = false)
-public abstract class ApartmentDatabase extends RoomDatabase {
+@Database(entities = {User.class}, version = 1, exportSchema = false)
+public abstract class UserDatabase extends RoomDatabase {
 
     private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
-    private static volatile ApartmentDatabase INSTANCE;
+    private static volatile UserDatabase INSTANCE;
     private static final RoomDatabase.Callback sRoomDatabaseCallback
             = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             databaseWriteExecutor.execute(() -> {
-                ApartmentDao dao = INSTANCE.apartmentDao();
+                UserDao dao = INSTANCE.userDao();
                 dao.deleteAll();
                 for (int i = 1; i < 10; i++) {
-                    dao.insert(new Apartment(String.valueOf(i + 1), i + 1));
-                    Log.d("g", String.valueOf(i));
+                    dao.insert(new User(String.valueOf(i + 1), String.valueOf(i + 1), String.valueOf(i + 1)));
                 }
             });
 
         }
     };
 
-    public static ApartmentDatabase getDatabase(final Context context) {
+    public static UserDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
-            synchronized (ApartmentDatabase.class) {
+            synchronized (UserDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    ApartmentDatabase.class, "apartment_database")
+                                    UserDatabase.class, "user_database")
                             .fallbackToDestructiveMigration()
                             .addCallback(sRoomDatabaseCallback)
                             .build();
@@ -51,5 +49,5 @@ public abstract class ApartmentDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
-    public abstract ApartmentDao apartmentDao();
+    public abstract UserDao userDao();
 }

@@ -1,7 +1,6 @@
 package com.example.MobileDevelopPractice.data.ApartmentDB;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
@@ -22,10 +21,13 @@ public class ApartmentRepository {
         return Apartments;
     }
 
+    public LiveData<List<Apartment>> getByUserID(int id) {
+        return mApartmentDao.getByUserID(id);
+    }
+
     public void insert(Apartment apartment) {
         ApartmentDatabase.databaseWriteExecutor.execute(() -> {
             mApartmentDao.insert(apartment);
-            Log.d("g", apartment.apartmentName);
         });
     }
 

@@ -21,6 +21,10 @@ public class ApartmentVM extends AndroidViewModel {
         mAllApartment = mRepository.getAllApartment();
     }
 
+    public LiveData<List<Apartment>> getByUserID(int id) {
+        return mRepository.getByUserID(id);
+    }
+
     public LiveData<List<Apartment>> getAllApartment() {
         return mAllApartment;
     }
