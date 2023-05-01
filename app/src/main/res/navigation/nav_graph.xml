@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
     <fragment
@@ -17,7 +18,14 @@
     <fragment
         android:id="@+id/apartmentFragment"
         android:name="com.example.MobileDevelopPractice.UI.views.ApartmentFragment"
-        android:label="MainMenuFragment"></fragment>
+        android:label="MainMenuFragment">
+        <action
+            android:id="@+id/action_apartmentFragment_to_energyFragment"
+            app:destination="@id/energyFragment" />
+        <action
+            android:id="@+id/action_apartmentFragment_to_waterFragment"
+            app:destination="@id/waterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mainMenuFragment"
         android:name="com.example.MobileDevelopPractice.UI.views.MainMenuFragment"
@@ -44,5 +52,32 @@
         <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/energyFragment"
+        android:name="com.example.MobileDevelopPractice.UI.views.EnergyFragment"
+        android:label="fragment_energy"
+        tools:layout="@layout/fragment_energy">
+        <action
+            android:id="@+id/action_energyFragment_to_payFragment"
+            app:destination="@id/payFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/waterFragment"
+        android:name="com.example.MobileDevelopPractice.UI.views.WaterFragment"
+        android:label="fragment_water"
+        tools:layout="@layout/fragment_water">
+        <action
+            android:id="@+id/action_waterFragment_to_payFragment"
+            app:destination="@id/payFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.example.MobileDevelopPractice.UI.views.PayFragment"
+        android:label="fragment_pay"
+        tools:layout="@layout/fragment_pay">
+        <action
+            android:id="@+id/action_payFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
     </fragment>
 </navigation>

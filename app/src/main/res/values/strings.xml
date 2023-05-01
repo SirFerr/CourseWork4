@@ -1,11 +1,21 @@
 <resources>
-    <string name="app_name">АСПКУ</string>
-    <string name="testListElement">Квартира 1</string>
+    <string name="app_name">ЖКХ</string>
     <string name="Phone">Номер телефона</string>
     <string name="Email">Почта</string>
     <string name="Passwd">Пароль</string>
     <string name="testEmail">test@gmail.com</string>
+    <string name="water">Оплата воды</string>
+    <string name="energy">Оплата электроэнергии</string>
+    <string name="other">Оплата других коммунальных услуг</string>
+    <string name="apartmentName">Название квартиры</string>
+    <string name="address">Адрес</string>
+    <string name="apartmentNum">Номер квартиры</string>
+    <string name="payerСode">Код плательщика</string>
+    <string name="energyCode">Эл. энергия лицевой счет</string>
+    <string name="energyDeviceCode">Номер прибора учета эл. энергии</string>
+
+
+    <string name="default_notification_channel_id">channel_id</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="default_notification_channel_id">channel_id</string>
 </resources>

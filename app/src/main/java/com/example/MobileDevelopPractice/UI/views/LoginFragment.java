@@ -8,10 +8,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-import com.example.MobileDevelopPractice.UI.viewmodels.UserVM;
 import com.example.MobileDevolopPractice.R;
 
 
@@ -29,9 +27,6 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        UserVM userVM = new ViewModelProvider(this).get(UserVM.class);
-
-
         view = inflater.inflate(R.layout.fragment_login, container, false);
 
         EditText email = view.findViewById(R.id.editTextTextEmailAddress);
@@ -43,7 +38,7 @@ public class LoginFragment extends Fragment {
         }
         view.findViewById(R.id.continueBtn).setOnClickListener(v -> {
             if (!String.valueOf(email.getText()).equals("")) {
-                if (userVM.findByEmail(String.valueOf(email.getText())).equals(String.valueOf(password.getText()))) {
+                if ("2".equals(String.valueOf(password.getText())) && String.valueOf(email.getText()).equals("2")) {
                     Bundle bundle12 = new Bundle();
                     bundle12.putString("email", String.valueOf(((EditText) view
                             .findViewById(R.id.editTextTextEmailAddress))

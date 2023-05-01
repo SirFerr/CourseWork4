@@ -6,14 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.MobileDevelopPractice.UI.viewmodels.ApartmentVM;
-import com.example.MobileDevelopPractice.UI.viewmodels.UserVM;
 import com.example.MobileDevolopPractice.R;
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UserVM userVM = new ViewModelProvider(this).get(UserVM.class);
         ApartmentVM apartmentVM = new ViewModelProvider(this).get(ApartmentVM.class);
         setContentView(R.layout.activity_main);
     }
