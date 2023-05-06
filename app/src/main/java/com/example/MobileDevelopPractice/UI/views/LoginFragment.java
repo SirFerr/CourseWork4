@@ -24,6 +24,7 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -37,9 +38,19 @@ public class LoginFragment extends Fragment {
             ((EditText) view.findViewById(R.id.editTextTextEmailAddress)).setText(bundle.getString("email"));
         }
         view.findViewById(R.id.continueBtn).setOnClickListener(v -> {
+
             if (!String.valueOf(email.getText()).equals("")) {
                 if ("2".equals(String.valueOf(password.getText())) && String.valueOf(email.getText()).equals("2")) {
                     Bundle bundle12 = new Bundle();
+                    bundle12.putInt("UserID", 2);
+                    bundle12.putString("email", String.valueOf(((EditText) view
+                            .findViewById(R.id.editTextTextEmailAddress))
+                            .getText()));
+
+                    Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_mainMenuFragment, bundle12);
+                } else if ("3".equals(String.valueOf(password.getText())) && String.valueOf(email.getText()).equals("3")) {
+                    Bundle bundle12 = new Bundle();
+                    bundle12.putInt("UserID", 3);
                     bundle12.putString("email", String.valueOf(((EditText) view
                             .findViewById(R.id.editTextTextEmailAddress))
                             .getText()));

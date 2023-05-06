@@ -16,8 +16,8 @@ public interface ApartmentDao {
     @Query("DELETE FROM Apartment")
     void deleteAll();
 
-    @Query("SELECT * FROM Apartment WHERE userID = :userId")
-    LiveData<List<Apartment>> getByUserID(int userId);
+    @Query("DELETE FROM Apartment WHERE apartmentId = :id")
+    void deleteByID(int id);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Apartment apartment);

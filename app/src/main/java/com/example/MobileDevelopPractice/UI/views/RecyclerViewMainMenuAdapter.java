@@ -20,10 +20,13 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
     private final OnStateClickListener onClickListener;
     private final List<Apartment> apartments;
 
-    public RecyclerViewMainMenuAdapter(Context context, List<Apartment> apartments, OnStateClickListener onClickListener) {
+    private final int UserID;
+
+    public RecyclerViewMainMenuAdapter(Context context, List<Apartment> apartments, int UserID, OnStateClickListener onClickListener) {
         this.inflater = LayoutInflater.from(context);
         this.onClickListener = onClickListener;
         this.apartments = apartments;
+        this.UserID = UserID;
     }
 
     @NonNull
@@ -36,9 +39,11 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(RecyclerViewMainMenuAdapter.ViewHolder holder, int position) {
         Apartment apartment = apartments.get(position);
-        holder.apartmentID.setText(String.valueOf(apartment.apartmentId));
-        holder.apartmentName.setText(String.valueOf(apartment.apartmentName));
-        holder.itemView.setOnClickListener(v -> onClickListener.onStateClick(apartment, position));
+        if (apartment.UserID == UserID) {
+            holder.apartmentName.setText(String.valueOf(apartment.apartmentName));
+            holder.itemView.setOnClickListener(v -> onClickListener.onStateClick(apartment, position));
+        }
+
     }
 
     @Override
@@ -52,12 +57,11 @@ public class RecyclerViewMainMenuAdapter extends RecyclerView.Adapter<RecyclerVi
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView apartmentName, apartmentID;
+        final TextView apartmentName;
 
         ViewHolder(View view) {
             super(view);
             apartmentName = view.findViewById(R.id.apartmentName);
-            apartmentID = view.findViewById(R.id.apartmentID);
         }
 
     }

@@ -29,21 +29,19 @@ public class MainMenuFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         ApartmentVM apartmentVM = new ViewModelProvider(this).get(ApartmentVM.class);
 
-
+        Bundle bundle = getArguments();
         apartmentVM.getAllApartment().observe(this, apartments -> {
                     RecyclerViewMainMenuAdapter.OnStateClickListener onClickListener = (state, position) -> {
                         Bundle bundle1 = new Bundle();
-                        Apartment temp = apartments.get(state.apartmentId - 1);
+                        Apartment temp = apartments.get(position);
                         bundle1.putString("id", String.valueOf(temp.apartmentId));
-                        bundle1.putString("name", String.valueOf(temp.apartmentName));
+                        bundle1.putString("name", temp.apartmentName);
                         Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_apartmentFragment, bundle1);
                     };
                     ((RecyclerView) view.findViewById(R.id.RecyclerViewCity))
-                            .setAdapter(new RecyclerViewMainMenuAdapter(
-                                    getContext(), apartments, onClickListener));
+                            .setAdapter(new RecyclerViewMainMenuAdapter(getContext(), apartments, bundle.getInt("UserID"), onClickListener));
                 }
         );
 
@@ -62,7 +60,10 @@ public class MainMenuFragment extends Fragment {
         }
 
         view.findViewById(R.id.addApartmentBtn).setOnClickListener(
-                v -> Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_addApartmentFragment));
+
+                v -> {
+                    Navigation.findNavController(view).navigate(R.id.action_mainMenuFragment_to_addApartmentFragment, bundle);
+                });
         return view;
     }
 }

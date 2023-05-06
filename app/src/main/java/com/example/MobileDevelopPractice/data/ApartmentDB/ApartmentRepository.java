@@ -17,12 +17,14 @@ public class ApartmentRepository {
         Apartments = mApartmentDao.getAll();
     }
 
-    public LiveData<List<Apartment>> getAllApartment() {
-        return Apartments;
+    public void deleteByID(int id) {
+        ApartmentDatabase.databaseWriteExecutor.execute(() -> {
+            mApartmentDao.deleteByID(id);
+        });
     }
 
-    public LiveData<List<Apartment>> getByUserID(int id) {
-        return mApartmentDao.getByUserID(id);
+    public LiveData<List<Apartment>> getAllApartment() {
+        return Apartments;
     }
 
     public void insert(Apartment apartment) {

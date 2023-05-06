@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/apartmentName"
+        android:id="@+id/addApartmentName"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_alignParentStart="true"
@@ -17,7 +17,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/apartmentAdress"
+        android:id="@+id/apartmentAddress"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/apartmentName"
@@ -32,12 +32,12 @@
         android:id="@+id/apartmentNumber"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_below="@id/apartmentAdress"
+        android:layout_below="@id/apartmentAddress"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_weight="1"
         android:ems="10"
-        android:hint="apartmentNum"
+        android:hint="@string/apartmentNum"
         android:inputType="text" />
 
     <EditText
