@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -18,13 +17,6 @@ import com.example.MobileDevolopPractice.R;
 
 public class MainMenuFragment extends Fragment {
     View view;
-
-    @Nullable
-    @Override
-    public View getView() {
-        return view;
-    }
-
 
     @Override
     public void onResume() {
@@ -58,6 +50,7 @@ public class MainMenuFragment extends Fragment {
             TextView textView = view.findViewById(R.id.emailName);
             textView.setText(bundle.getString("email"));
         }
+
 
         view.findViewById(R.id.addApartmentBtn).setOnClickListener(
 

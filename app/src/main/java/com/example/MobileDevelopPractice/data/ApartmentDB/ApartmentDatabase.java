@@ -39,6 +39,7 @@ public abstract class ApartmentDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     ApartmentDatabase.class, "apartment_database")
+                            .fallbackToDestructiveMigration()
                             .build();
                 }
             }

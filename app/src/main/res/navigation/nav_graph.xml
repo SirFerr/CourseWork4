@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_adminFragment"
+            app:destination="@id/adminFragment" />
     </fragment>
     <fragment
         android:id="@+id/apartmentFragment"
@@ -83,4 +86,9 @@
             android:id="@+id/action_payFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="com.example.MobileDevelopPractice.UI.views.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" />
 </navigation>
