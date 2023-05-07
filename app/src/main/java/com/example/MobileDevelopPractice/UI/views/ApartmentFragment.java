@@ -43,7 +43,12 @@ public class ApartmentFragment extends Fragment {
                 apartmentVM.deleteByID(Integer.parseInt(bundle.getString("id")));
             });
         }
-
+        view.findViewById(R.id.waterBtn).setOnClickListener(v ->
+                Navigation.findNavController(view).navigate(R.id.action_apartmentFragment_to_waterFragment)
+        );
+        view.findViewById(R.id.energyBtn).setOnClickListener(v ->
+                Navigation.findNavController(view).navigate(R.id.action_apartmentFragment_to_energyFragment)
+        );
 
         return view;
     }

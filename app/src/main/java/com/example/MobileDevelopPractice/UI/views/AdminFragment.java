@@ -21,17 +21,17 @@ public class AdminFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        EditText id = (EditText) view.findViewById(R.id.adminEditText);
+        EditText id = view.findViewById(R.id.adminEditText);
         Button ban = view.findViewById(R.id.ban);
         Button unban = view.findViewById(R.id.unban);
         UserVM userVM = new ViewModelProvider(this).get(UserVM.class);
 
-        ban.setOnClickListener(v -> {
-            userVM.updateRole(Integer.parseInt(String.valueOf(id.getText())), 2);
-        });
-        unban.setOnClickListener(v -> {
-            userVM.updateRole(Integer.parseInt(String.valueOf(id.getText())), 0);
-        });
+        ban.setOnClickListener(v ->
+                userVM.updateRole(Integer.parseInt(String.valueOf(id.getText())), 2)
+        );
+        unban.setOnClickListener(v ->
+                userVM.updateRole(Integer.parseInt(String.valueOf(id.getText())), 0)
+        );
 
     }
 
